@@ -1,0 +1,20 @@
+CREATE TABLE `trigger_task` (
+                                `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+                                `task_type` varchar(64) NOT NULL COMMENT '触发任务类型',
+                                `task_status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '任务状态 1-未结束；2-结束',
+                                `trigger_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '触发开始时间',
+                                `remark` varchar(255) DEFAULT '' COMMENT '备注',
+                                `mdc` varchar(1500) DEFAULT NULL COMMENT 'MDC日志信息',
+                                `fail_msg` varchar(1000) DEFAULT '' COMMENT '错误信息',
+                                `last_fail_time` datetime DEFAULT NULL COMMENT '上次失败时间',
+                                `fail_count` int(11) NOT NULL DEFAULT '0' COMMENT '错误次数',
+                                `lock_key` varchar(64) DEFAULT '' COMMENT '分布式锁key',
+                                `param1` varchar(1000) DEFAULT '' COMMENT '参数1',
+                                `param2` varchar(1000) DEFAULT '' COMMENT '参数2',
+                                `param3` varchar(1000) DEFAULT '' COMMENT '参数3',
+                                `param4` varchar(1000) DEFAULT '' COMMENT '参数4',
+                                `param5` varchar(1000) DEFAULT '' COMMENT '参数5',
+                                `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                                `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                                PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='触发任务表';
